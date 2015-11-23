@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Library management system</title>
+</head>
+
+<body>
+  <table >
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+    <% for(var i = 0; i < users.length; i++) { %>
+    <tr>
+      <td><%= users[i].name %></td>
+      <td><%= users[i].email %></td>
+      <td>
+        <form method="POST" action="/users/<%= users[i]._id %>?_method=DELETE">
+          <input type="submit" value="Delete"/>
+        </form>
+      </td>
+    </tr>
+    <% } %>
+  </table>
+  
+  <a href="/users/new">Add new user</a>
+  
+</body>
+</html>

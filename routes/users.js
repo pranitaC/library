@@ -78,6 +78,7 @@ router.put("/:id", function(req, res, next){
 
 router.delete('/:id', function(req, res, next){
   User.findOne({ _id: req.params['id'] }, function(err, user){
+    
     if(err) {
       res.redirect('/users');
     } else {

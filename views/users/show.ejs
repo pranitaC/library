@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>Library management system</title>
+</head>
+
+<body>
+  <h1>Showing user</h1>
+  
+    <div>
+      <label>Name: <%= user.name %></label>
+      
+    </div>
+    <div>
+    <label>Email: <%= user.email %></label>
+    </div>
+    <a href="/users/<%= user._id %>/edit">Edit</a>
+</body>
+</html>

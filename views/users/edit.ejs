@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>Library management system</title>
+</head>
+
+<body>
+  <h1>Edit user</h1>
+  <form method="POST" action="/users/<%= user._id %>?_method=PUT">
+    <div>
+      <label>Name:</label>
+      <input type="text" value="<%= user.name %>" name="user[name]"></input>
+    </div>
+    <div>
+    <label>Email:</label>
+      <input type="text" value="<%= user.email %>" name="user[email]"></input>
+    </div>
+    <div>
+    <label>Password:</label>
+      <input type="password" value="<%= user.password %>" name="user[password]"></input>
+    </div>
+    <div>
+      <input type="submit" value = "update"/>
+    </div>
+  </form>
+</body>
+</html>
