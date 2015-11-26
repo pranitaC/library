@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>Library management system</title>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <th>User Id</th>
+      <th>Book Id</th>
+      <th>Issuing date</th>
+      <th>Returning date</th>
+    </tr>
+    <% for(var i = 0; i < booksusers.length; i++) { %>
+    <tr>
+      <td><%= booksusers[i].user_id %></td>
+      <td><%= booksusers[i].book_id %></td>
+      <td><%= booksusers[i].issued_on %></td>
+      <td><%= booksusers[i].returned_on %></td>
+      <td><a href="/booksusers/<%= booksusers[i]._id %>">Show</a></td>
+      <td>
+        <form action="/booksusers/<%= booksusers[i]._id %>?_method=DELETE" method='post'>
+          <input type="submit" value="Delete"/>
+        </form>
+      </td>
+    </tr>
+    <% } %>
+  </table>
+    <a href="/booksusers/new">Add new details</a>
+  
+</body>
+</html>

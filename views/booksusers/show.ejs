@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>Library management system</title>
+</head>
+
+<body>
+  <h1>Showing book user details</h1>
+    <div>
+      <label>User Id: <%= bookuser.user_id %></label>
+    </div>
+    <div>
+      <label>Book Id: <%= bookuser.book_id %></label>
+    </div>
+    <div>
+      <label>Issuing date: <%= dateFormat(bookuser.issued_on, "dd-mm-yyyy"); %></label>
+    </div>
+    <a href="/booksusers/<%= bookuser._id %>/edit">Edit</a>
+</body>
+</html>

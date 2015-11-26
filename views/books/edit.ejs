@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Library management system</title>
+</head>
+
+<body>
+  <h1>Edit book details</h1>
+  <form method="POST" action="/books/<%= book._id %>?_method=PUT">
+    <div>
+      <label>Title:</label>
+      <input type="text" value="<%= book.title %>" name="book[title]"></input>
+    </div>
+    <div>
+    <label>Author:</label>
+      <input type="text" value="<%= book.author %>" name="book[author]"></input>
+    </div>
+    <div>
+    <label>Edition:</label>
+      <input type="text" value="<%= book.edition %>" name="book[edition]"></input>
+    </div>
+    <div>
+        <select name="book[status]">
+          <option value=''>Select status</option>
+          <option value='I'>Issued</option>
+          <option value='A'>Available</option>
+        </select>
+      </div>
+    <div>
+      <input type="submit" value = "update"/>
+    </div>
+  </form>
+</body>
+</html>

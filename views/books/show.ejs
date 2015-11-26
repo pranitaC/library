@@ -1,0 +1,23 @@
+<html>
+<head>
+<title>Library management system</title>
+</head>
+
+<body>
+  <h1>Showing book details</h1>
+  
+    <div>
+      <label>Title: <%= book.title %></label>
+    </div>
+    <div>
+      <label>Author: <%= book.author %></label>
+    </div>
+    <div>
+      <label>Edition: <%= book.edition %></label>
+    </div>
+    <div>
+      <label>Status: <%= book.status %></label>
+    </div>
+    <a href="/books/<%= book._id %>/edit">Edit</a>
+</body>
+</html>

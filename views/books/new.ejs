@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Library management system</title>
+</head>
+
+<body>
+  <h1>Add new book details</h1>
+  <form method="POST" action="/books">
+    <div>
+      <label>Title:</label>
+      <input type="text" name="book[title]"></input>
+    </div>
+    <div>
+      <label>Author:</label>
+      <input type="text" name="book[author]"></input>
+    </div>
+    <div>
+      <label>Edition:</label>
+      <input type="text" name="book[edition]"></input>
+    </div>
+      <div>
+      <label>Status:</label>
+      <div>
+        <select name="book[status]">
+          <option value=''>Select status</option>
+          <option value='I'>Issued</option>
+          <option value='A'>Available</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <input type="submit" value = "Create"/>
+    </div>
+  </form>
+</body>
+</html>

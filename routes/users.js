@@ -17,11 +17,11 @@ router.get('/', function(req, res, next) {
   
 });
 
-router.get('/new', function(req, res, next){
+router.get('/new', function(req, res, next) {
   res.render("users/new");
 });
 
-router.post('/', function(req, res, next){
+router.post('/', function(req, res, next) {
   console.log(req.body.user);
   var user = new User(req.body.user);
   user.save(function(err){
@@ -33,21 +33,41 @@ router.post('/', function(req, res, next){
   });
 });
 
-router.get("/:id", function(req, res, next){
-  User.findById(req.params["id"], function(err, user){
+router.get("/search", function(req, res, next) {
+  console.log(req.query);
+  req.query.search = req.query.search || {};
+  var search_params = {};
+  if(req.query.search.name) {
+    search_params.name = new RegExp(req.query.search.name,"i");
+  }
+  if(req.query.search.email) {
+    search_params.email = new RegExp(req.query.search.email,"i");
+  }
+  console.log(search_params);
+  User.find(search_params, function(err, users) {
+    res.render("users/search", {
+      users: users,
+      search_params: req.query.search
+    });    
+  });  
+});
+
+
+router.get("/:id", function(req, res, next) {
+  User.findById(req.params["id"], function(err, user) {
   console.log(user);
     if(err){
       res.redirect("/users");
     }else{
-      res.render("users/show",{
+      res.render("users/show", {
         user: user
       });    
     }
   });  
 });
 
-router.get('/:id/edit', function(req, res, next){
-  User.findById(req.params["id"], function(err, user){
+router.get('/:id/edit', function(req, res, next) {
+  User.findById(req.params["id"], function(err, user) {
     if(err) {
       res.redirect('/users');
     } else {
@@ -59,8 +79,8 @@ router.get('/:id/edit', function(req, res, next){
 });
 
 
-router.put("/:id", function(req, res, next){
-  User.findById(req.params["id"], function(err, user){
+router.put("/:id", function(req, res, next) {
+  User.findById(req.params["id"], function(err, user) {
     if(err) {
       console.log("********************* User not found **********************");
       res.redirect("/users");
@@ -76,8 +96,8 @@ router.put("/:id", function(req, res, next){
   })
 });
 
-router.delete('/:id', function(req, res, next){
-  User.findOne({ _id: req.params['id'] }, function(err, user){
+router.delete('/:id', function(req, res, next) {
+  User.findOne({ _id: req.params['id'] }, function(err, user) {
     
     if(err) {
       res.redirect('/users');

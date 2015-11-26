@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>Library management system</title>
+</head>
+
+<body>
+  <h1>Issue a book</h1>
+  <form method="post" action="/booksusers">
+    <div>
+      <label>User Id:</label>
+      <input type="text" name="bookuser[user_id]"></input>
+    </div>
+    <div>
+      <label>Book Id:</label>
+      <input type="text" name="bookuser[book_id]"></input>
+    </div>
+    <div>
+      <label>Issuing Date:</label>
+      <input type="date" name="bookuser[issued_on]"></input>
+    </div>
+    <div>
+      <input type="submit" value = "Create"/>
+    </div>
+  </form>
+</body>
+</html>
