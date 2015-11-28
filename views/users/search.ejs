@@ -1,34 +1,48 @@
 <html>
-<head>
-<title>Library management system</title>
-</head>
-
-<body>
-  <h1>Search Users...</h1>
-  <form action="/users/search" method="get">
-    <div>
-      <div>
-        Search by name: <input type="text" value="<%= search_params.name %>" name="search[name]"/>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Library management system</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"></link>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css"></link>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/javascripts/html5shiv.min.js"></script>
+      <script src="/javascripts/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <h1>Search Users...</h1>
+      <div class="row">
+        <div class="col-lg-6">
+          <form action="/users/search" method="get">
+            <div class="form-group">
+              <label>Search by name: </label>
+              <input class="form-control" type="text" value="<%= search_params.name %>" name="search[name]"/>
+            </div class="form-group">
+            <div class="form-group">
+              <label>Search by email: </label>
+              <input class="form-control" type="text" value="<%= search_params.email %>" name="search[email]"/>
+            </div>
+            <input class="btn btn-default" type="submit" value="Search"/>
+          </form>  
+        </div>
       </div>
-      <div>
-        Search by email: <input type="text" value="<%= search_params.email %>" name="search[email]"/>
-      </div>
+      <table class="table table-bordered table-hover">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+        <% for(var i = 0; i < users.length; i++){ %>
+          <tr>
+            <td><%= users[i].name %></td>
+            <td><%= users[i].email %></td>
+          </tr>
+        <% } %>
+      </table>
     </div>
-    <div>
-      <input type="submit" value="Search"/>
-    </div>
-  </form>  
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-    </tr>
-    <% for(var i = 0; i < users.length; i++){ %>
-      <tr>
-        <td><%= users[i].name %></td>
-        <td><%= users[i].email %></td>
-      </tr>
-    <% } %>
-  </table>
-</body>
+  </body>
 </html>

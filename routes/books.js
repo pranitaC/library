@@ -8,13 +8,12 @@ router.get('/', function(req, res, next) {
     if(err){
       res.send(err.message);
     }else{
-      res.render("books/index",{
-        books: books 
-      });
+      res.json(books);
+      //res.render("books/index",{
+      //  books: books 
+      //});
     }
-    
   });
-  
 });
 
 router.get('/new', function(req, res, next){
@@ -23,7 +22,7 @@ router.get('/new', function(req, res, next){
 
 router.get("/:id", function(req, res, next){
   Book.findById(req.params["id"], function(err, book){
-  console.log(book);
+    //console.log(book);
     if(err){
       res.redirect("/books");
     }else{
@@ -35,8 +34,8 @@ router.get("/:id", function(req, res, next){
 });
 
 router.post('/', function(req, res, next){
-  console.log(req.body.book);
-  var book = new Book(req.body.book);
+  console.log(req.body);
+  var book = new Book(req.body);
   book.save(function(err){
     if(err){
       res.render("books/new");
@@ -64,11 +63,14 @@ router.put("/:id", function(req, res, next){
       console.log(" Book details not found ");
       res.redirect("/books");
     } else {
-      Book.update({ _id: req.params["id"]}, req.body.book, {multi: true}, function(err, raw){
+      Book.update({ _id: req.params["id"]}, req.body, {multi: true}, function(err, raw){
         if(err){
-          res.render("books/edit",{ book: book });
+          //res.render("books/edit",{ book: book });
+          res.json(book);
         }else{
-          res.redirect("/books/"+book._id);
+          //res.redirect("/books/"+book._id);
+          console.log(book);
+          res.json({});
         }
       });
     }

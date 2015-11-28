@@ -4,7 +4,7 @@ var User = require('../models/user');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.redirect("/users/search");
+  res.render("site/index");
 });
 
 module.exports = router;

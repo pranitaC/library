@@ -13,30 +13,19 @@
       <script src="/javascripts/respond.min.js"></script>
     <![endif]-->
   </head>
-
   <body>
     <div class="container">
-      <h2> Listing Users </h2>
-      <table class="table table-bordered">
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Action</th>
-        </tr>
-        <% for(var i = 0; i < users.length; i++) { %>
-        <tr>
-          <td><%= users[i].name %></td>
-          <td><%= users[i].email %></td>
-          <td>
-            <form method="POST" action="/users/<%= users[i]._id %>?_method=DELETE">
-              <input type="submit" value="Delete"/>
-            </form>
-          </td>
-        </tr>
-        <% } %>
-      </table>
-      <a class="btn btn-info" href="/users/new">Add new user</a>
+      <h2>Welcome to Library Management System</h2>
+      <div class="books" id="books-div">
+      </div>
     </div>
-    
+    <script src="/javascripts/jquery.js"></script>
+    <script src="/javascripts/underscore-min.js"></script>
+    <script src="/javascripts/backbone.js"></script>
+    <script src="/javascripts/backbone/models/book.js"></script>
+    <script src="/javascripts/backbone/views/books_view.js"></script>
+    <script src="/javascripts/backbone/views/book_view.js"></script>
+    <script src="/javascripts/backbone/views/edit_book_view.js"></script>
+    <script src="/javascripts/library.js"></script>
   </body>
 </html>
