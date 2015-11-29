@@ -22,19 +22,21 @@ router.get('/new', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  console.log(req.body.user);
+  //console.log(req.body.user);
   var user = new User(req.body.user);
   user.save(function(err){
     if(err){
       res.render("users/new");
     }else{
-      res.redirect("/users/"+user._id);
+      res.render("users/show",{
+        user: user
+      });
     }
   });
 });
 
 router.get("/search", function(req, res, next) {
-  console.log(req.query);
+  //console.log(req.query);
   req.query.search = req.query.search || {};
   var search_params = {};
   if(req.query.search.name) {
@@ -43,7 +45,7 @@ router.get("/search", function(req, res, next) {
   if(req.query.search.email) {
     search_params.email = new RegExp(req.query.search.email,"i");
   }
-  console.log(search_params);
+  //console.log(search_params);
   User.find(search_params, function(err, users) {
     res.render("users/search", {
       users: users,
@@ -55,7 +57,7 @@ router.get("/search", function(req, res, next) {
 
 router.get("/:id", function(req, res, next) {
   User.findById(req.params["id"], function(err, user) {
-  console.log(user);
+    //console.log(user);
     if(err){
       res.redirect("/users");
     }else{
@@ -82,7 +84,7 @@ router.get('/:id/edit', function(req, res, next) {
 router.put("/:id", function(req, res, next) {
   User.findById(req.params["id"], function(err, user) {
     if(err) {
-      console.log("********************* User not found **********************");
+      //console.log("********************* User not found **********************");
       res.redirect("/users");
     } else {
       User.update({ _id: req.params["id"]}, req.body.user, {multi: true}, function(err, raw){

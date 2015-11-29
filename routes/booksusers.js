@@ -32,7 +32,7 @@ router.post('/', function(req,res,next){
 
 router.get("/:id", function(req, res, next) {
   BookUser.findById(req.params["id"], function(err, bookuser) {
-  console.log(bookuser);
+    //console.log(bookuser);
     if(err){
       res.redirect("/booksusers");
     }else{
