@@ -12,7 +12,7 @@ var BooksView = Backbone.View.extend({
   },
   
   render: function() {
-    var tableHtml = "<div class='row'><div class='col-lg-4'><table class='table table-bordered'>"+
+    var tableHtml = "<div class='row'><div class='col-lg-6'><table class='table table-bordered'>"+
                     "<thead><tr>"+
                       "<th>Title</th>"+
                       "<th>Author</th>"+
@@ -30,6 +30,7 @@ var BooksView = Backbone.View.extend({
     var booksView = this;
     booksView.$el.find('tbody').html("");
     this.model.each(function(book){
+      console.log("Adding book to the table: "+book.get("title"));
       var bookView = new BookView({ model: book });
       booksView.$el.find('tbody').append(bookView.$el);
     });    
