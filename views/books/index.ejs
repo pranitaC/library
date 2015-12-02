@@ -1,32 +1,49 @@
 <html>
 <head>
-<title>Library management system</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Library management system</title>
+    
+  <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"></link>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css"></link>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="/javascripts/html5shiv.min.js"></script>
+    <script src="/javascripts/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 
 <body>
-  <table >
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Edition</th>
-      <th>Status</th>
-    </tr>
-    <% for(var i = 0; i < books.length; i++) { %>
-    <tr>
-      <td><%= books[i].title %></td>
-      <td><%= books[i].author %></td>
-      <td><%= books[i].edition %></td>
-      <td><%= books[i].status %></td>
-      <td>
+  <div class="container">
+    <h2>Listing Books</h2>
+    <table class="table table-bordered">
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Edition</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+      <% for(var i = 0; i < books.length; i++) { %>
+      <tr>
+        <td><%= books[i].title %></td>
+        <td><%= books[i].author %></td>
+        <td><%= books[i].edition %></td>
+        <td><%= books[i].status %></td>
+        <td>
         <form method="POST" action="/books/<%= books[i]._id %>?_method=DELETE">
-          <input type="submit" value="Delete"/>
+          <input class="btn btn-danger" type="submit" value="Delete"/>
         </form>
-      </td>
-    </tr>
-    <% } %>
-  </table>
+        </td>
+      </tr>
+      <% } %>
+    </table>
   
-  <a href="/books/new">Add new book details</a>
-  
+    <a class="btn btn-info" href="/books/new">Add new book details</a>
+  </div>
 </body>
 </html>
