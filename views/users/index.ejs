@@ -17,6 +17,7 @@
   <body>
     <div class="container">
       <h2> Listing Users </h2>
+      <%- include('../layouts/bootstrap_header') %>
       <table class="table table-bordered">
         <tr>
           <th>Name</th>
@@ -29,7 +30,7 @@
           <td><%= users[i].email %></td>
           <td>
             <form method="POST" action="/users/<%= users[i]._id %>?_method=DELETE">
-              <input type="submit" value="Delete"/>
+              <input class="btn btn-danger" type="submit" value="Delete"/>
             </form>
           </td>
         </tr>
